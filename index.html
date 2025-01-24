@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You, Puja</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000; /* Initial background color set to black */
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            transition: background-color 1s;
+        }
+
+        .container {
+            text-align: center;
+            border: 5px solid #ffffff; /* Border color for "I am sorry" */
+            padding: 20px;
+            background-color: #000000; /* Background color for "I am sorry" */
+            border-radius: 15px;
+            transition: background-color 1s, border-color 1s, color 1s;
+        }
+
+        h1 {
+            color: #ffffff; /* Text color for "I am sorry" */
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .emoji {
+            font-size: 3rem; /* You can change this value to make the emojis bigger or smaller */
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 5s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <h1 id="message1">I am sorry</h1>
+        <h1 id="message2" class="hidden">I love you, Puja</h1>
+        <div id="emojis"></div>
+    </div>
+    <script>
+        const sadEmojis = ['😢', '😭', '😞', '😔', '😟'];
+        const loveEmojis = ['💖', '💘', '💞', '💕', '❤️'];
+        let currentEmojis = sadEmojis;
+        const container = document.getElementById('emojis');
+
+        function createEmoji() {
+            const emoji = document.createElement('span');
+            emoji.textContent = currentEmojis[Math.floor(Math.random() * currentEmojis.length)];
+            emoji.classList.add('emoji');
+            emoji.style.left = `${Math.random() * 100}vw`;
+            container.appendChild(emoji);
+
+            setTimeout(() => {
+                emoji.remove();
+            }, 5000);
+        }
+
+        function animateEmojis() {
+            const interval = setInterval(createEmoji, 500);
+
+            // Switch message, emojis, and background colors after 5 seconds
+            setTimeout(() => {
+                document.getElementById('message1').classList.add('hidden');
+                document.getElementById('message2').classList.remove('hidden');
+                currentEmojis = loveEmojis;
+                document.body.style.backgroundColor = '#ffccff'; /* Change background color to pink */
+                document.getElementById('container').style.backgroundColor = '#ffe4e1'; /* Change container background color to pink */
+                document.getElementById('container').style.borderColor = '#ff69b4'; /* Change container border color to pink */
+                document.querySelector('#message2').style.color = '#ff69b4'; /* Change text color for "I love you, Puja" */
+                
+                clearInterval(interval);
+                animateEmojis();
+            }, 5000);
+        }
+
+        animateEmojis();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
