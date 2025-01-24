@@ -51,7 +51,7 @@
         }
 
         .emoji {
-            font-size: 3rem; /* You can change this value to make the emojis bigger or smaller */
+            font-size: 10rem; /* You can change this value to make the emojis bigger or smaller */
             position: absolute;
             bottom: 0;
             left: 50%;
@@ -67,8 +67,8 @@
         <div id="emojis"></div>
     </div>
     <script>
-        const sadEmojis = ['😢', '😭', '😞', '😔', '😟'];
-        const loveEmojis = ['💖', '💘', '💞', '💕', '❤️'];
+        const sadEmojis = ['😢', '😭', '😞', '😔', '😑'];
+        const loveEmojis = ['💖', '💘', '🩶', '🖤', '❤️'];
         let currentEmojis = sadEmojis;
         const container = document.getElementById('emojis');
 
@@ -99,7 +99,7 @@
                 
                 clearInterval(interval);
                 animateEmojis();
-            }, 5000);
+            }, 10000);
         }
 
         animateEmojis();
